@@ -1,0 +1,12 @@
+# ai_docs/deploy-config.yaml
+# ship-strategy のループ挙動と本番スイッチを制御する設定ファイル。
+
+# ループ制御
+# 1起動 = 1イテレーション。完了後は停止して人間が確認。
+# POC 段階なので手動確認を挟みながら進める。
+loop_enabled: false           # true にすると同一セッション内でループ継続
+loop_max_iterations: 20       # loop_enabled: true のときの安全上限
+
+# 本番デプロイ
+auto_deploy_to_main: false    # false: develop ブランチ経由（人間が main マージ）
+                               # true:  main へ直接マージ（動作確認後に変更）

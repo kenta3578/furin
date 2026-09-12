@@ -1,0 +1,56 @@
+version: 2
+
+project_name: furin
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: furin
+    main: .
+    binary: furin
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: furin
+    formats: [tar.gz]
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else }}{{ .Arch }}{{ end }}
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+
+release:
+  draft: false
+
+# homebrew tap の Formula 自動生成は tap リポジトリ (homebrew-tap) 未作成のため予約。
+# tap リポジトリ作成後に有効化する。
+# brews:
+#   - name: furin
+#     repository:
+#       owner: kenta3578
+#       name: homebrew-tap
+#     homepage: "https://github.com/kenta3578/furin"
+#     description: "ターミナルで動く名前付き並列インターバルリマインダー TUI"
+#     license: "MIT"

@@ -1,0 +1,43 @@
+# Build
+dist/
+build/
+furin
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local docs (personal notes, not for git)
+local_docs/
+
+# AI tooling local state (not repo canon)
+.claude/context/
+.claude/worktrees/
+.serena/
+
+# ai_docs は北極星・設定のみ正典。世代付きスナップショットは追跡しない
+ai_docs/session-seed.md
+ai_docs/strategy/
