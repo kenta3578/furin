@@ -38,6 +38,14 @@ local_docs/
 .claude/worktrees/
 .serena/
 
-# ai_docs は北極星・設定のみ正典。世代付きスナップショットは追跡しない
-ai_docs/session-seed.md
-ai_docs/strategy/
+# ai_docs は既定で追跡しない。公開してよいものだけ戻す
+ai_docs/*
+!ai_docs/.gitkeep
+!ai_docs/north-star.md
+!ai_docs/discovery.md
+!ai_docs/tech-stack.md
+!ai_docs/ui-ux.md
+!ai_docs/design-system.md
+!ai_docs/adr/
+!ai_docs/specification/
+!ai_docs/screens/
